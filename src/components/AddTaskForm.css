@@ -1,0 +1,274 @@
+.add-task-page {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  animation: slideInRight 0.3s ease;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.add-task-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: #034ea2;
+  color: white;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.add-task-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.add-task-form {
+  padding: 2rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .add-task-page {
+    max-width: 100%;
+    left: 0;
+    transform: translateX(0);
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.task-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.75rem;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: white;
+  color: #231f20;
+}
+
+.task-input::placeholder {
+  color: #66676b;
+}
+
+.task-input:focus {
+  border-color: #034ea2;
+  background: white;
+}
+
+.task-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.875rem 1rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  outline: none;
+  resize: vertical;
+  transition: all 0.2s ease;
+  background: white;
+  color: #231f20;
+}
+
+.task-textarea::placeholder {
+  color: #a5adba;
+}
+
+.task-textarea:focus {
+  border-color: #034ea2;
+  background: white;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel-button,
+.add-button {
+  padding: 0.875rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 110px;
+}
+
+.cancel-button {
+  background: white;
+  color: #034ea2;
+  border: 1px solid #034ea2;
+}
+
+.cancel-button:hover {
+  background: #f4f5f7;
+}
+
+.add-button {
+  background: #034ea2;
+  color: white;
+}
+
+.add-button:hover {
+  background: #0747a6;
+}
+
+.add-button:disabled {
+  background: #dfe1e6;
+  color: #a5adba;
+  cursor: not-allowed;
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.custom-dropdown.open .dropdown-selected {
+  border-color: #034ea2;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.status-indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-indicator.pending {
+  background: #a5adba;
+}
+
+.status-indicator.in-progress {
+  background: #ff991f;
+}
+
+.status-indicator.completed {
+  background: #00875a;
+}
+
+.status-text {
+  flex: 1;
+  font-size: 0.75rem;
+  color: #5e6c84;
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  color: #034ea2;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #034ea2;
+  border-top: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  animation: dropdownSlide 0.2s ease;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  transition: background 0.2s ease;
+}
+
+.dropdown-option:hover {
+  background: #f4f5f7;
+}
+
+.dropdown-option.selected {
+  background: #e3f2fd;
+}
+
+.dropdown-option:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}

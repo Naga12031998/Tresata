@@ -1,0 +1,28 @@
+.input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.75rem;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: white;
+  font-weight: 400;
+  color: #231F20;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #66676B;
+}
+
+.input:focus {
+  border-color: #0052CC;
+}
+
+.input-search {
+  padding-left: 2.5rem;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>')
+    no-repeat 0.75rem center white;
+  background-size: 16px;
+}

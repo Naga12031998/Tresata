@@ -1,0 +1,112 @@
+.task-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+  animation: slideIn 0.3s ease;
+  margin: 0 -1.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-card:hover {
+  background: #f4f5f7;
+}
+
+.task-card:last-child {
+  border-bottom: none;
+}
+
+.task-card.completed {
+  opacity: 0.6;
+}
+
+.task-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.task-card-title {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #034ea2;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.task-card.completed .task-card-title {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-card-description {
+  font-size: 0.75rem;
+  color: #231F20;
+  font-weight: 400;
+  line-height: 100%;
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+}
+
+.task-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.task-card-date {
+  font-size: 0.625rem;
+  color: #767676;
+  font-weight: 400;
+}
+
+.task-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.task-card:hover .task-card-actions {
+  opacity: 1;
+}
+
+.edit-btn {
+  color: #034ea2;
+}
+
+.delete-btn {
+  color: #de350b;
+}
+
+@media (max-width: 640px) {
+  .task-card {
+    padding: 1rem;
+    margin: 0 -1rem;
+  }
+
+  .task-card-actions {
+    opacity: 1;
+  }
+}

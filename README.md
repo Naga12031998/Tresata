@@ -1,46 +1,183 @@
-# Getting Started with Create React App
+# Task Management Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, feature-rich task management application built with React and TypeScript following Atomic Design Methodology.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Core Features
+- ✅ **Task List**: Display all tasks with their status
+- ✅ **Add Task**: Create new tasks with title and description
+- ✅ **Mark as Completed**: Toggle task completion status with visual feedback
+- ✅ **Edit Task**: Edit task title, description, and status
+- ✅ **Delete Task**: Remove tasks from the list
+- 🔍 **Search**: Search tasks by title or description
+- 🎯 **Filter**: Filter tasks by status (All, In Progress, Pending, Completed)
+- 💾 **Persistence**: Tasks persist between page reloads using localStorage
+- ✨ **Animations**: Smooth animations for all interactions
+- 📱 **Responsive**: Works seamlessly on desktop and mobile devices
 
-### `npm start`
+## Project Structure (Atomic Design)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+src/
+├── components/
+│   ├── atoms/                    # Basic building blocks
+│   │   ├── Avatar/
+│   │   ├── Button/
+│   │   ├── Input/
+│   │   ├── StatusBadge/
+│   │   └── Textarea/
+│   ├── molecules/                # Simple component combinations
+│   │   ├── FilterButtons/
+│   │   ├── SearchBar/
+│   │   ├── StatusDropdown/
+│   │   └── TaskCard/
+│   ├── organisms/                # Complex component sections
+│   │   ├── TaskForm/
+│   │   └── TaskSection/
+│   └── templates/                # Page-level layouts
+│       └── TaskManagementTemplate/
+├── hooks/
+│   └── useLocalStorage.ts        # Custom hook for localStorage
+├── types/
+│   └── Task.ts                   # TypeScript interfaces
+├── App.tsx                       # Main application component
+└── App.css                       # Global styles
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Atomic Design Methodology
 
-### `npm test`
+### Atoms
+Small, reusable components that serve as building blocks:
+- `Avatar`: Circular avatar with initial letter
+- `Button`: Reusable button with variants (primary, secondary, icon)
+- `Input`: Text input with variants (default, search)
+- `StatusBadge`: Status indicator with colored dot
+- `Textarea`: Multi-line text input
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Molecules
+Simple combinations of atoms:
+- `FilterButtons`: Group of filter buttons
+- `SearchBar`: Search input with icon
+- `StatusDropdown`: Dropdown for selecting task status
+- `TaskCard`: Individual task display with avatar, title, description, and actions
 
-### `npm run build`
+### Organisms
+Complex, self-contained components:
+- `TaskForm`: Form for adding/editing tasks
+- `TaskSection`: Collapsible section containing task list
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Templates
+Page-level layouts:
+- `TaskManagementTemplate`: Main application layout with all features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technical Highlights
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **TypeScript**: Full type safety throughout the application
+- **Atomic Design**: Well-organized, scalable component architecture
+- **Custom Hooks**: `useLocalStorage` for persistent state management
+- **Performance**: Optimized with `useMemo` for filtering
+- **Clean Code**: Modular, reusable, and maintainable codebase
+- **CSS Animations**: Smooth transitions and keyframe animations
+- **Accessibility**: Proper ARIA labels and semantic HTML
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Development
+```bash
+npm start
+```
+Runs the app at [http://localhost:3000](http://localhost:3000)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Build
+```bash
+npm run build
+```
+Creates an optimized production build
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Testing
+```bash
+npm test
+```
 
-## Learn More
+## Component Usage Examples
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Using Atoms
+```tsx
+import { Button } from './components/atoms/Button/Button';
+import { Input } from './components/atoms/Input/Input';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<Button variant="primary" onClick={handleClick}>
+  Submit
+</Button>
+
+<Input 
+  variant="search" 
+  placeholder="Search..." 
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+/>
+```
+
+### Using Molecules
+```tsx
+import { TaskCard } from './components/molecules/TaskCard/TaskCard';
+
+<TaskCard 
+  task={task}
+  onEdit={() => handleEdit(task)}
+  onDelete={() => handleDelete(task.id)}
+/>
+```
+
+### Using Organisms
+```tsx
+import { TaskSection } from './components/organisms/TaskSection/TaskSection';
+
+<TaskSection
+  title="In Progress"
+  tasks={inProgressTasks}
+  isExpanded={true}
+  onToggle={handleToggle}
+  onEditTask={handleEdit}
+  onDeleteTask={handleDelete}
+/>
+```
+
+## State Management
+
+- Uses React's `useState` for local component state
+- Custom `useLocalStorage` hook for persistent state
+- `useMemo` for optimized filtering and computed values
+- Props drilling for component communication
+
+## Browser Support
+
+Works on all modern browsers that support ES6+ and localStorage.
+
+## Design Principles
+
+1. **Single Responsibility**: Each component has one clear purpose
+2. **Reusability**: Components are designed to be reused across the application
+3. **Composition**: Complex components are built from simpler ones
+4. **Separation of Concerns**: Logic, presentation, and styling are properly separated
+5. **Type Safety**: TypeScript ensures type correctness throughout
+
+## Future Enhancements
+
+- Task categories/tags
+- Due dates and reminders
+- Task priority levels
+- Drag and drop reordering
+- Dark mode support
+- Export/import tasks
+- Backend integration
+
+## License
+
+MIT
